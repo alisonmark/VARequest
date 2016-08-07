@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <log4net>
+    <appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+      <File value="log\VisaPointAutoRequest.log" />
+      <AppendToFile value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <!-- For production -->
+        <!--ConversionPattern value="%date{yyyy/MM/dd HH:mm:ss.fff} %-5level %logger{1} - %message%newline" /-->
+
+        <!-- For development -->
+        <ConversionPattern value="%date{yyyy/MM/dd HH:mm:ss.fff} [%thread] %-5level %logger - %method - %message%newline" />
+      </layout>
+    </appender>
+
+    <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <File value="log\MultiTiff.log" />
+      <AppendToFile value="true" />
+      <RollingStyle value="Size" />
+      <MaxSizeRollBackups value="10" />
+      <MaximumFileSize value="10MB" />
+      <StaticLogFileName value="true" />
+      <Layout type="log4net.Layout.PatternLayout">
+        <!-- For production -->
+        <!--ConversionPattern value="%date{yyyy/MM/dd HH:mm:ss.fff} %-5level %logger{1} - %message%newline" /-->
+
+        <!-- For development -->
+        <ConversionPattern value="%date{yyyy/MM/dd HH:mm:ss.fff} [%thread] %-5level %logger - %method - %message%newline" />
+      </Layout>
+    </appender>
+
+    <root>
+      <level value="DEBUG" />
+      <appender-ref ref="RollingLogFileAppender" />
+    </root>
+  </log4net>
+</configuration>

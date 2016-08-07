@@ -1,0 +1,49 @@
+2016/08/07 15:16:41.263 [9] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 15:16:45.378 [9] INFO  VisaPointAutoRequest.FrmMain - startProcess - Start process. First time start
+2016/08/07 15:31:09.631 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 16:09:56.822 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 16:10:19.666 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 16:10:20.922 [10] INFO  VisaPointAutoRequest.FrmMain - startProcess - Start process. First time start
+2016/08/07 09:22:05.983 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:34:09.526 [9] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:35:12.084 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:35:12 now. Start working.
+2016/08/07 09:35:12.099 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:36:06.078 [9] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:36:08.865 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:36:08 now. Start working.
+2016/08/07 09:36:08.865 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:40:07.462 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:40:14.365 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:40:14 now. Start working.
+2016/08/07 09:40:14.365 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:44:43.057 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:44:52.807 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:44:52 now. Start working.
+2016/08/07 09:44:52.811 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:46:39.362 [10] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:47:22.128 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:47:22 now. Start working.
+2016/08/07 09:47:22.132 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:49:10.212 [9] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 09:49:15.693 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 09:49:15 now. Start working.
+2016/08/07 09:49:15.693 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 09:50:15.177 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/07/2016 09:50:15
+2016/08/07 09:50:59.974 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 09:51:00
+2016/08/07 09:51:59.958 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 09:52:00
+2016/08/07 09:52:59.974 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 09:53:00
+2016/08/07 09:53:59.958 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 09:54:00
+2016/08/07 12:47:27.488 [9] DEBUG VisaPointAutoRequest.FrmMain - .ctor - Initialize form
+2016/08/07 12:47:34.065 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - It's 08/07/2016 12:47:34 now. Start working.
+2016/08/07 12:47:34.065 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Delay 58980 milisecs for application start
+2016/08/07 12:48:33.565 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/07/2016 12:48:33
+2016/08/07 12:48:33.596 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/07/2016 12:48:33
+2016/08/07 12:49:00.018 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 12:49:00
+2016/08/07 12:49:00.362 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/07 12:49:33.612 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/07/2016 12:49:33
+2016/08/07 12:49:59.956 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 12:50:00
+2016/08/07 12:50:00.315 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/07 12:50:33.581 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/07/2016 12:50:33
+2016/08/07 12:50:59.971 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 12:51:00
+2016/08/07 12:51:00.315 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/07 12:51:33.581 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/07/2016 12:51:33
+2016/08/07 12:52:00.002 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 12:52:00
+2016/08/07 12:52:00.346 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/07 12:52:33.612 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/07/2016 12:52:33
+2016/08/07 12:52:59.971 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/07/2016 12:53:00
+2016/08/07 12:53:00.284 [10] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
