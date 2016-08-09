@@ -241,11 +241,11 @@ namespace VisaPointAutoRequest
 
             if (vp.response.Contains("cp1_lblNoDates"))
             {
-                
+
                 log(vp.message + "\n" + "NOT_OPEN");
                 _log.Info("Request result: NOT_OPEN");
             }
-            else if(vp.response.Contains("rblDate"))
+            else if (vp.response.Contains("rblDate"))
             {
                 // Post to form with applicant Apointment
                 log("Getting validation data...");
@@ -284,7 +284,86 @@ namespace VisaPointAutoRequest
                 //log(vp.message + "\n" + vp.postData);
                 log(vp.message);
                 _log.Info("Request result: OPEN");
-                
+
+                #region STEP 5 Candidate Information
+                // Post to form with Information
+                log("Getting validation data...");
+                viewState = vp.GetViewState();
+                eventValidation = vp.GetEventValidation();
+                rsm1 = vp.GetRsm1();
+                generator = vp.GetGenerator();
+                List<string> infoCandidate = vp.getInfomation();
+                DateTime today = DateTime.Today;
+                DateTime minDate = today.AddYears(-120);
+                string calendarSDStr = string.Format("[[{0},{1},{2}]]", today.Year.ToString(), today.Month.ToString(), "1");
+                string calendarADStr = string.Format("[[{0},{1},{2}],[{3},{4},{5}],[{3},{4},{5}]]"
+                                                , minDate.Year.ToString()
+                                                , minDate.Month.ToString()
+                                                , minDate.Day.ToString()
+                                                , today.Year.ToString()
+                                                , today.Month.ToString()
+                                                , today.Day.ToString());
+
+                log("Requesting to https://visapoint.eu/form");
+                vp.URL = "https://visapoint.eu/form";
+                vp.requestType = "POST";
+
+                vp.postData = string.Format("rsm1_TSM={0}"
+                                            + "&__LASTFOCUS="
+                                            + "&__EVENTTARGET=ctl00%24cp1%24btnNext"
+                                            + "&__EVENTARGUMENT={1}"
+                                            + "&__VIEWSTATE={2}"
+                                            + "&__VIEWSTATEGENERATOR={3}"
+                                            + "&__VIEWSTATEENCRYPTED={4}"
+                                            + "&__EVENTVALIDATION={5}"
+                                            + "&ctl00%24ddLocale%3DEnglish%20(United%20Kingdom)"
+                                            + "&ctl00_ddLocale_ClientState%3D"
+                                            + "&ctl00%24cp1%24txtFirstName%3D{6}"
+                                            + "&ctl00_cp1_txtFirstName_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22Fill%20in%20your%20first%20name(s)%22%2C%22validationText%22%3A%22{6}%22%2C%22valueAsString%22%3A%22{6}%22%2C%22lastSetTextBoxValue%22%3A%22{6}%22%7D"
+                                            + "&ctl00%24cp1%24txtFamilyName%3D{7}"
+                                            + "&ctl00_cp1_txtFamilyName_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22Fill%20in%20your%20Family%20Name(s)%22%2C%22validationText%22%3A%22{7}%22%2C%22valueAsString%22%3A%22{7}%22%2C%22lastSetTextBoxValue%22%3A%22{7}%22%7D"
+                                            + "&ctl00%24cp1%24txtBirthDate%3D{8:yyyy-MM-dd}"
+                                            + "&ctl00%24cp1%24txtBirthDate%24dateInput%3D{8:dd/MM/yyyy}"
+                                            + "&ctl00_cp1_txtBirthDate_dateInput_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22%22%2C%22validationText%22%3A%22{8:yyyy-MM-dd}-00-00-00%22%2C%22valueAsString%22%3A%22{8:yyyy-MM-dd}-00-00-00%22%2C%22minDateStr%22%3A%22{10:yyyy-MM-dd}-00-00%22%2C%22maxDateStr%22%3A%22{9:yyyy-MM-dd}-00-00-00%22%2C%22lastSetTextBoxValue%22%3A%22{8:dd/MM/yyyy}%22%7D"
+                                            + "&ctl00_cp1_txtBirthDate_calendar_SD%3D{11}"
+                                            + "&ctl00_cp1_txtBirthDate_calendar_AD%3D{12}"
+                                            + "&ctl00_cp1_txtBirthDate_ClientState%3D%7B%22minDateStr%22%3A%22{10:yyyy-MM-dd}-00-00-00%22%2C%22maxDateStr%22%3A%22{9:yyyy-MM-dd}-00-00-00%22%7D"
+                                            + "&ctl00%24cp1%24ddBirthCountry%3D{13}"
+                                            + "&ctl00_cp1_ddBirthCountry_ClientState%3D{14}"
+                                            + "&ctl00%24cp1%24ddSex%3D{15}"
+                                            + "&ctl00_cp1_ddSex_ClientState%3D{16}"
+                                            + "&ctl00_cp1_btnPrev_ClientState%3D%7B%22text%22%3A%22Previous%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22prev%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
+                                            + "&ctl00_cp1_btnNext_ClientState%3D%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
+                                            , rsm1
+                                            , string.Empty
+                                            , viewState
+                                            , generator
+                                            , string.Empty
+                                            , eventValidation
+                                            , infoCandidate[0]
+                                            , infoCandidate[1]
+                                            , vp.dateOfBirth
+                                            , today
+                                            , minDate
+                                            , calendarSDStr
+                                            , calendarADStr
+                                            , infoCandidate[3]
+                                            , string.Empty
+                                            , infoCandidate[4]
+                                            , string.Empty);
+
+                vp.SendRequest();
+                showRes("Response From https://visapoint.eu/form", vp.response);
+                //log(vp.message + "\n" + vp.postData);
+                _log.InfoFormat("Candidate Information : {0} - {1}", infoCandidate[1], infoCandidate[3]);
+                log(vp.message);
+                #endregion
+
+            }
+            else
+            {
+                log(vp.message + "\n" + "CAPTCHA FALSE");
+                _log.Info("Request result: CAPTCHA FALSE");
             }
 
             if (IntervalTimeUtil.isResetTime)
@@ -362,7 +441,7 @@ namespace VisaPointAutoRequest
             step1Res.Text = title;
             step1Res.setRes(content);
             step1Res.Show();
-            //step1Res.Close();
+            step1Res.Close();
         }
 
         private void log(String message)
