@@ -20,7 +20,8 @@ namespace VisaPointAutoRequest
         // Logger
         private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
 
-        private String stringSocks = "184.75.209.130:6060";
+        //private String stringSocks = "195.122.150.129:6060";
+        private String stringSocks = "";
         //public Uri newUri = new Uri("184.75.209.130:6060");
         //public WebProxy proxy = new WebProxy();
 
@@ -152,16 +153,26 @@ namespace VisaPointAutoRequest
             log("Requesting to https://visapoint.eu/form");
             vp.URL = "https://visapoint.eu/form";
             vp.requestType = "POST";
-            String citizenShip = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+            //String citizenShip = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+            String citizenShip = "Albania%20(Shqip%C3%ABria)";
             String embassy = "Please+select+the+Czech+Embassy%2FConsulate+you+wish+to+visit.";
             String residence = "Select+your+country+of+residence";
-            String citizenIndex = "24";
+            //String citizenIndex = "24";
+            String citizenIndex = "0";
+            //vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddCitizenship&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
+            //                                + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
+            //                                + "&ctl00_cp1_ddCitizenship_ClientState=%7B%22logEntries%22%3A%5B%5D%2C%22value%22%3A%2239%22%2C%22text%22%3A%22{4}%22%2C%22enabled%22%3Atrue%2C%22checkedIndices%22%3A%5B%5D%2C%22checkedItemsTextOverflows%22%3Afalse%7D&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
+            //                                + "&ctl00$cp1$ddEmbassy={6}&ctl00_cp1_ddEmbassy_ClientState=&ctl00$cp1$ddVisaType=Residence+permit&ctl00_cp1_ddVisaType_ClientState="
+            //                                + "&ctl00_cp1_btnNext_ClientState=%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
+            //                                , rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+
             vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddCitizenship&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
                                             + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
-                                            + "&ctl00_cp1_ddCitizenship_ClientState=%7B%22logEntries%22%3A%5B%5D%2C%22value%22%3A%2239%22%2C%22text%22%3A%22{4}%22%2C%22enabled%22%3Atrue%2C%22checkedIndices%22%3A%5B%5D%2C%22checkedItemsTextOverflows%22%3Afalse%7D&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
+                                            + "&ctl00_cp1_ddCitizenship_ClientState=%7B%22logEntries%22%3A%5B%5D%2C%22value%22%3A%2226%22%2C%22text%22%3A%22{4}%22%2C%22enabled%22%3Atrue%2C%22checkedIndices%22%3A%5B%5D%2C%22checkedItemsTextOverflows%22%3Afalse%7D&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
                                             + "&ctl00$cp1$ddEmbassy={6}&ctl00_cp1_ddEmbassy_ClientState=&ctl00$cp1$ddVisaType=Residence+permit&ctl00_cp1_ddVisaType_ClientState="
                                             + "&ctl00_cp1_btnNext_ClientState=%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
                                             , rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+
             vp.SendRequest();
             // Show Response form [3]
             showRes("Response From https://visapoint.eu/form", vp.response);
@@ -177,8 +188,11 @@ namespace VisaPointAutoRequest
             log("Requesting to https://visapoint.eu/form");
             vp.URL = "https://visapoint.eu/form";
             vp.requestType = "POST";
-            embassy = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29+-+Hanoj";
-            residence = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+            //embassy = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29+-+Hanoj";
+            //residence = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+            embassy = "Albania%20(Shqip%C3%ABria)%20-%20Tirana";
+            residence = "Albania%20(Shqip%C3%ABria)";
+
             vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddVisaType&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
                                             + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
                                             + "&ctl00_cp1_ddCitizenship_ClientState=&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
@@ -202,8 +216,12 @@ namespace VisaPointAutoRequest
             log("Requesting to https://visapoint.eu/form");
             vp.URL = "https://visapoint.eu/form";
             vp.requestType = "POST";
-            embassy = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29+-+Hanoj";
-            residence = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+            //embassy = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29+-+Hanoj";
+            //residence = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
+
+            embassy = "Albania%20(Shqip%C3%ABria)%20-%20Tirana";
+            residence = "Albania%20(Shqip%C3%ABria)";
+
             String clientState = vp.EncodeDataString(string.Format("{{\"enabled\":true,\"emptyMessage\":\"\",\"validationText\":\"{0}\",\"valueAsString\":\"{0}\",\"valueWithPromptAndLiterals\":\"{0}\",\"lastSetTextBoxValue\":\"{0}\"}}", captcha));
             vp.postData = MakePostDataCaptcha(rsm1, viewState, eventValidation, vp.response, clientState, vp.lastCaptchaURL, citizenShip, embassy, residence);
 
@@ -218,15 +236,16 @@ namespace VisaPointAutoRequest
             }
 
             vp.SendRequest();
-            
+            // Set status
+            showRes("Response From https://visapoint.eu/form", vp.response);
+
             if (vp.response.Contains("cp1_lblNoDates"))
             {
-                // Set status
-                showRes("Response From https://visapoint.eu/form", vp.response);
+                
                 log(vp.message + "\n" + "NOT_OPEN");
                 _log.Info("Request result: NOT_OPEN");
             }
-            else
+            else if(vp.response.Contains("rblDate"))
             {
                 // Post to form with applicant Apointment
                 log("Getting validation data...");
@@ -235,7 +254,7 @@ namespace VisaPointAutoRequest
                 rsm1 = vp.GetRsm1();
                 generator = vp.GetGenerator();
                 string appDate = vp.getAppointDate();
-
+                _log.InfoFormat("Apointment Date : {0}", appDate);
                 log("Requesting to https://visapoint.eu/form");
                 vp.URL = "https://visapoint.eu/form";
                 vp.requestType = "POST";
@@ -265,6 +284,7 @@ namespace VisaPointAutoRequest
                 //log(vp.message + "\n" + vp.postData);
                 log(vp.message);
                 _log.Info("Request result: OPEN");
+                
             }
 
             if (IntervalTimeUtil.isResetTime)
@@ -342,7 +362,7 @@ namespace VisaPointAutoRequest
             step1Res.Text = title;
             step1Res.setRes(content);
             step1Res.Show();
-            step1Res.Close();
+            //step1Res.Close();
         }
 
         private void log(String message)
