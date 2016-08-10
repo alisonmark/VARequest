@@ -6,22 +6,31 @@ namespace VisaPointAutoRequest
     class IntervalTimeUtil
     {
         #region Constants
-        private const string INTERVAL_FILE_NAME = "intervaltime.tmp";
+        public const string IntervalFilePath = "tmp\\intervaltime.tmp";
         #endregion
 
         #region Fields/Properties
-        public static bool isResetTime = true;
+        public static bool IsResetTime = true;
         private static int _intervalTime = -1;
         #endregion
 
         #region Methods
-        public static int GetIntervalTime()
+        public static int IntervalTime
         {
-            if (_intervalTime == -1)
+            get
             {
-                loadTimeFromFile();
+                if (_intervalTime == -1)
+                {
+                    loadTimeFromFile();
+                }
+                return _intervalTime;
             }
-            return _intervalTime;
+
+            set
+            {
+                _intervalTime = value;
+                saveIntervalTime();
+            }
         }
 
         private static void loadTimeFromFile()
@@ -30,7 +39,7 @@ namespace VisaPointAutoRequest
             var isReset = false;
 
             // Create temp file path
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, INTERVAL_FILE_NAME);
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IntervalFilePath);
             // File information
             var fileInfo = new FileInfo(filePath);
             // File string data
@@ -74,14 +83,8 @@ namespace VisaPointAutoRequest
         }
         private static void saveIntervalTime()
         {
-            var sFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, INTERVAL_FILE_NAME);
-            File.WriteAllText(sFilePath, _intervalTime.ToString());
-        }
-
-        public static void SetIntervalTime(int intervalTime)
-        {
-            _intervalTime = intervalTime;
-            saveIntervalTime();
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IntervalFilePath);
+            File.WriteAllText(filePath, _intervalTime.ToString());
         }
         #endregion
     }

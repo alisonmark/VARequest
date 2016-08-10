@@ -27,6 +27,8 @@ namespace VisaPointAutoRequest
             bw.WorkerReportsProgress = true;
             prgDelay.Maximum = 100;
             prgDelay.Step = 1;
+
+            lblText.Text = string.Format("Waiting {0} miliseconds", _delayMilisecs);
         }
 
         private void FrmOnProgress_Load(object sender, EventArgs e)

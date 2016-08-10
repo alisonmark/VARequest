@@ -34,10 +34,11 @@
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.tracerTimer = new System.Windows.Forms.Timer(this.components);
             this.delayProcTimer = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.settingCaptchaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proxyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.changeSockTimer = new System.Windows.Forms.Timer(this.components);
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -77,16 +78,16 @@
             this.delayProcTimer.Interval = 60000;
             this.delayProcTimer.Tick += new System.EventHandler(this.delayProcTimer_Tick);
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingCaptchaToolStripMenuItem,
             this.proxyToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(414, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(414, 24);
+            this.mainMenu.TabIndex = 2;
+            this.mainMenu.Text = "menuStrip1";
             // 
             // settingCaptchaToolStripMenuItem
             // 
@@ -100,6 +101,11 @@
             this.proxyToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.proxyToolStripMenuItem.Text = "Proxy";
             // 
+            // changeSockTimer
+            // 
+            this.changeSockTimer.Interval = 60000;
+            this.changeSockTimer.Tick += new System.EventHandler(this.changeSockTimer_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,12 +113,13 @@
             this.ClientSize = new System.Drawing.Size(414, 339);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.mainMenu);
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visapoint Auto Request";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,9 +132,10 @@
         private System.Windows.Forms.RichTextBox txtLog;
         private System.Windows.Forms.Timer tracerTimer;
         private System.Windows.Forms.Timer delayProcTimer;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem settingCaptchaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proxyToolStripMenuItem;
+        private System.Windows.Forms.Timer changeSockTimer;
     }
 }
 

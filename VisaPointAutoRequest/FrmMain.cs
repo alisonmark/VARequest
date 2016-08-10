@@ -21,7 +21,7 @@ namespace VisaPointAutoRequest
         private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
 
         //private String stringSocks = "195.122.150.129:6060";
-        private String stringSocks = "";
+        private String stringSocks = SocksLoaderUtil.Instance.NextSock;
         //public Uri newUri = new Uri("184.75.209.130:6060");
         //public WebProxy proxy = new WebProxy();
 
@@ -47,9 +47,9 @@ namespace VisaPointAutoRequest
             _log.InfoFormat("It's {0} now. Start working.", ntpDate);
             // Calculate how many seconds to next 0.000 secs
             var differenceSecs = 60000 - ntpDate.Second * 1000 - ntpDate.Millisecond;
-            var intervalTime = IntervalTimeUtil.GetIntervalTime();
+            var intervalTime = IntervalTimeUtil.IntervalTime;
 
-            if(differenceSecs > intervalTime)
+            if (differenceSecs > intervalTime)
             {
                 differenceSecs = 59000 - intervalTime;
             }
@@ -60,13 +60,13 @@ namespace VisaPointAutoRequest
 
         private void startProcess()
         {
-            if (IntervalTimeUtil.GetIntervalTime() != -1)
+            if (IntervalTimeUtil.IntervalTime != -1)
             {
-                IntervalTimeUtil.isResetTime = false;
+                IntervalTimeUtil.IsResetTime = false;
             }
 
             // Reset trace time
-            if (IntervalTimeUtil.isResetTime)
+            if (IntervalTimeUtil.IsResetTime)
             {
                 _log.Info("Start process. First time start");
                 _traceTime = 0;
@@ -227,7 +227,7 @@ namespace VisaPointAutoRequest
 
             // Start last request
             // Wait to 0 second
-            if (!IntervalTimeUtil.isResetTime)
+            if (!IntervalTimeUtil.IsResetTime)
             {
                 // If is 0 second, start last request
                 var lastReqTime = NTPUtil.GetNetworkTime();
@@ -366,12 +366,12 @@ namespace VisaPointAutoRequest
                 _log.Info("Request result: CAPTCHA FALSE");
             }
 
-            if (IntervalTimeUtil.isResetTime)
+            if (IntervalTimeUtil.IsResetTime)
             {
                 tracerTimer.Stop();
-                IntervalTimeUtil.isResetTime = false;
+                IntervalTimeUtil.IsResetTime = false;
                 _log.InfoFormat("First request elapsed time is {0} secs", _traceTime);
-                IntervalTimeUtil.SetIntervalTime(_traceTime * 1000);
+                IntervalTimeUtil.IntervalTime = _traceTime * 1000;
                 startProcess();
             }
         }
@@ -434,7 +434,7 @@ namespace VisaPointAutoRequest
         {
             if (InvokeRequired)
             {
-                Invoke(new MethodInvoker(delegate() { showRes(title, content); }));
+                Invoke(new MethodInvoker(delegate () { showRes(title, content); }));
                 return;
             }
             Response step1Res = new Response();
@@ -478,6 +478,11 @@ namespace VisaPointAutoRequest
             FrmOnProgress onProgress = new FrmOnProgress(delayMiliSeconds);
             onProgress.ShowDialog();
         }
+
+        private void startChangeSockTimer()
+        {
+            changeSockTimer.Start();
+        }
         #endregion
 
         #region Events
@@ -500,6 +505,10 @@ namespace VisaPointAutoRequest
         {
             // Start process
             startProcess();
+
+            startChangeSockTimer();
+
+            btnStart.Enabled = false;
         }
 
         private void tracerTimer_Tick(object sender, EventArgs e)
@@ -512,7 +521,11 @@ namespace VisaPointAutoRequest
             if (!bw.IsBusy)
                 bw.RunWorkerAsync();
         }
-        #endregion
 
+        private void changeSockTimer_Tick(object sender, EventArgs e)
+        {
+            stringSocks = SocksLoaderUtil.Instance.NextSock;
+        }
+        #endregion
     }
 }

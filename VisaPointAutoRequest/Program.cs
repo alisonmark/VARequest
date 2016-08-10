@@ -24,6 +24,9 @@ namespace VisaPointAutoRequest
             XmlConfigurator.Configure(new FileInfo(path));
             NDC.Push(string.Empty);
 
+            // Create app folders
+            CreateAppFolders();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());
@@ -37,6 +40,11 @@ namespace VisaPointAutoRequest
         private static void CurrentDomainUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
             Log.Error(e.ExceptionObject);
+        }
+
+        private static void CreateAppFolders()
+        {
+            IOUtil.CreateDirectory("tmp", true);
         }
     }
 }
