@@ -359,6 +359,53 @@ namespace VisaPointAutoRequest
                 log(vp.message);
                 #endregion
 
+                #region STEP 6 Passport + Email
+                // Post to form with Passport + Email
+                log("Getting validation data...");
+                viewState = vp.GetViewState();
+                eventValidation = vp.GetEventValidation();
+                rsm1 = vp.GetRsm1();
+                generator = vp.GetGenerator();
+                infoCandidate = vp.getInfomation();
+                log("Requesting to https://visapoint.eu/form");
+                vp.URL = "https://visapoint.eu/form";
+                vp.requestType = "POST";
+
+                vp.postData = string.Format("rsm1_TSM={0}"
+                                            + "&__LASTFOCUS="
+                                            + "&__EVENTTARGET=ctl00%24cp1%24btnNext"
+                                            + "&__EVENTARGUMENT={1}"
+                                            + "&__VIEWSTATE={2}"
+                                            + "&__VIEWSTATEGENERATOR={3}"
+                                            + "&__VIEWSTATEENCRYPTED={4}"
+                                            + "&__EVENTVALIDATION={5}"
+                                            + "&ctl00%24ddLocale%3DEnglish%20(United%20Kingdom)"
+                                            + "&ctl00_ddLocale_ClientState%3D"
+                                            + "&ctl00%24cp1%24txtPassportNumber%3D{6}"
+                                            + "&ctl00_cp1_txtPassportNumber_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22Fill%20in%20your%20passport%20number%22%2C%22validationText%22%3A%22{6}%22%2C%22valueAsString%22%3A%22{6}%22%2C%22lastSetTextBoxValue%22%3A%22{6}%22%7D"
+                                            + "&ctl00%24cp1%24txtEmail%3D{7}"
+                                            + "&ctl00_cp1_txtEmail_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22Fill%20in%20valid%20email%22%2C%22validationText%22%3A%22{7}%22%2C%22valueAsString%22%3A%22{7}%22%2C%22lastSetTextBoxValue%22%3A%22{7}%22%7D"
+                                            + "&ctl00%24cp1%24txtPhone%3D%2B(111)%20111111111_"
+                                            + "&ctl00_cp1_txtPhone_ClientState%3D%7B%22enabled%22%3Atrue%2C%22emptyMessage%22%3A%22Fill%20in%20your%20phone%20number%22%2C%22validationText%22%3A%22%2B(111)%20111111111%22%2C%22valueAsString%22%3A%22%2B(111)%20111111111_%22%2C%22valueWithPromptAndLiterals%22%3A%22%2B(111)%20111111111_%22%2C%22lastSetTextBoxValue%22%3A%22%2B(111)%20111111111_%22%7D"
+                                            + "&ctl00_cp1_btnPrev_ClientState%3D%7B%22text%22%3A%22Previous%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22prev%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
+                                            + "&ctl00_cp1_btnNext_ClientState%3D%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
+                                            , rsm1
+                                            , string.Empty
+                                            , viewState
+                                            , generator
+                                            , string.Empty
+                                            , eventValidation
+                                            , infoCandidate[5]
+                                            , infoCandidate[6]
+                                            , "+(111) 111111111_"
+                                            , "+(111) 111111111");
+
+                vp.SendRequest();
+                showRes("Response From https://visapoint.eu/form", vp.response);
+                //log(vp.message + "\n" + vp.postData);
+                log(vp.message);
+                #endregion
+
             }
             else
             {

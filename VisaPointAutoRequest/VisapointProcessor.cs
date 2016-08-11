@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,8 +13,10 @@ using System.Threading.Tasks;
 
 namespace VisaPointAutoRequest
 {
+
     class VisapointProcessor
     {
+        private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
         WebRequest req = null;
         Stream dataStream = null;
         private String response_rsm1;
@@ -106,7 +109,7 @@ namespace VisaPointAutoRequest
                     Uri newUri = new Uri("http://" + socks.host + ":" + socks.port);
                     // Associate the newUri object to 'myProxy' object so that new myProxy settings can be set.
                     myProxy.Address = newUri;
-                    // Create a NetworkCredential object and associate it with the 
+                    // Create a NetworkCredential object and associate it with the
                     // Proxy property of request object.
                     myProxy.Credentials = new NetworkCredential("lanlan451@gmail.com", "vArDF2ssvkpU");
                     req.Proxy = socks.myProxy;
@@ -253,7 +256,7 @@ namespace VisaPointAutoRequest
 
                 if (selectedItem == null)
                 {
-                    Console.WriteLine("Lỗi khi chọn appointment date");
+                    _log.Info("Lỗi khi chọn appointment date");
                 }
                 strAppointDate = selectedItem.Value;
                 Console.WriteLine("Chọn appointment date OK ");
