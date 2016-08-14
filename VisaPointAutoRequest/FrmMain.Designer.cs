@@ -103,7 +103,7 @@
             // 
             // changeSockTimer
             // 
-            this.changeSockTimer.Interval = 60000;
+            this.changeSockTimer.Interval = 600000;
             this.changeSockTimer.Tick += new System.EventHandler(this.changeSockTimer_Tick);
             // 
             // FrmMain

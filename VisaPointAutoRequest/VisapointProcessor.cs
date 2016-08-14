@@ -105,13 +105,15 @@ namespace VisaPointAutoRequest
                 {
                     //req.Proxy = new WebProxy();
                     //req.Proxy.
-                    WebProxy myProxy = new WebProxy();
                     Uri newUri = new Uri("http://" + socks.host + ":" + socks.port);
+                    WebProxy myProxy = new WebProxy(newUri);
+                    //Uri newUri = new Uri("http://" + socks.host + ":" + socks.port);
                     // Associate the newUri object to 'myProxy' object so that new myProxy settings can be set.
-                    myProxy.Address = newUri;
+                    //myProxy.Address = newUri;
                     // Create a NetworkCredential object and associate it with the
                     // Proxy property of request object.
                     myProxy.Credentials = new NetworkCredential("lanlan451@gmail.com", "vArDF2ssvkpU");
+                    socks.myProxy = myProxy;
                     req.Proxy = socks.myProxy;
                 }
                 ((HttpWebRequest)req).CookieContainer = new CookieContainer();

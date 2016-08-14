@@ -85,10 +85,14 @@ namespace VisaPointAutoRequest
 
         private void startRequest()
         {
-            _log.InfoFormat("Start request at {0}", NTPUtil.GetNetworkTime());
             clearLog();
+            _log.InfoFormat("Start request at {0}", NTPUtil.GetNetworkTime());
+                        
             // Create processor object
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
+
+            _log.InfoFormat("PROXY IS : {0}", stringSocks);
+
             // Request disclaimer to get cookie session
             log("Requesting to https://visapoint.eu/disclaimer");
             vp.URL = "https://visapoint.eu/disclaimer";
