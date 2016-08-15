@@ -49,13 +49,16 @@ namespace VisaPointAutoRequest
             var differenceSecs = 60000 - ntpDate.Second * 1000 - ntpDate.Millisecond;
             var intervalTime = IntervalTimeUtil.IntervalTime;
 
-            if (differenceSecs > intervalTime)
-            {
-                differenceSecs = 59000 - intervalTime;
-            }
+            //if (differenceSecs > intervalTime)
+            //{
+            //    differenceSecs = 60000 - intervalTime;
+            //}
 
-            _log.InfoFormat("Delay {0} milisecs for application start", differenceSecs);
-            delay(differenceSecs);
+            delay(differenceSecs, "Delay to 0 secs");
+            _log.InfoFormat("After wait 1. It's {0}", NTPUtil.GetNetworkTime());
+
+            delay(59000 - intervalTime, "Delay to 0 secs");
+            _log.InfoFormat("After wait 2. It's {0}", NTPUtil.GetNetworkTime());
         }
 
         private void startProcess()
@@ -214,6 +217,7 @@ namespace VisaPointAutoRequest
             eventValidation = vp.GetEventValidation();
             rsm1 = vp.GetRsm1();
 
+
             // Can fai refresh lai captcha truoc khi request khoang 7s - 10s
             captcha = vp.RefreshCaptcha();
 
@@ -235,7 +239,7 @@ namespace VisaPointAutoRequest
             {
                 // If is 0 second, start last request
                 var lastReqTime = NTPUtil.GetNetworkTime();
-                System.Threading.Thread.Sleep(59999 - lastReqTime.Second * 1000 - lastReqTime.Millisecond);
+                delay(59999 - lastReqTime.Second * 1000 - lastReqTime.Millisecond, "Before send last request");
                 _log.InfoFormat("WARNING!!! Send request at {0}", NTPUtil.GetNetworkTime());
             }
 
@@ -420,10 +424,8 @@ namespace VisaPointAutoRequest
             if (IntervalTimeUtil.IsResetTime)
             {
                 tracerTimer.Stop();
-                IntervalTimeUtil.IsResetTime = false;
                 _log.InfoFormat("First request elapsed time is {0} secs", _traceTime);
                 IntervalTimeUtil.IntervalTime = _traceTime * 1000;
-                startProcess();
             }
         }
 
@@ -523,10 +525,10 @@ namespace VisaPointAutoRequest
                 bw.RunWorkerAsync();
         }
 
-        private void delay(int delayMiliSeconds)
+        private void delay(int delayMiliSeconds, string task)
         {
             //System.Threading.Thread.Sleep(delayMiliSeconds);
-            FrmOnProgress onProgress = new FrmOnProgress(delayMiliSeconds);
+            FrmOnProgress onProgress = new FrmOnProgress(delayMiliSeconds, task);
             onProgress.ShowDialog();
         }
 
@@ -549,7 +551,11 @@ namespace VisaPointAutoRequest
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            if(IntervalTimeUtil.IsResetTime)
+            {
+                IntervalTimeUtil.IsResetTime = false;
+                startProcess();
+            }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
