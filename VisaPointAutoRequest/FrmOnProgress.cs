@@ -19,7 +19,7 @@ namespace VisaPointAutoRequest
             InitializeComponent();
         }
 
-        public FrmOnProgress(int delayMilisecs)
+        public FrmOnProgress(int delayMilisecs, string task)
         {
             InitializeComponent();
             this._delayMilisecs = delayMilisecs;
@@ -28,7 +28,7 @@ namespace VisaPointAutoRequest
             prgDelay.Maximum = 100;
             prgDelay.Step = 1;
 
-            lblText.Text = string.Format("Waiting {0} miliseconds", _delayMilisecs);
+            lblText.Text = string.Format("Waiting {0} miliseconds. Tasks: {1}", _delayMilisecs, task);
         }
 
         private void FrmOnProgress_Load(object sender, EventArgs e)
