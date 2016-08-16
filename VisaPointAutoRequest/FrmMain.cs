@@ -32,10 +32,6 @@ namespace VisaPointAutoRequest
 
         public FrmMain()
         {
-            if (_log.IsDebugEnabled)
-            {
-                _log.Debug("Initialize form");
-            }
             InitializeComponent();
         }
 
@@ -44,33 +40,29 @@ namespace VisaPointAutoRequest
         {
             // Get time from time.windows.com
             var ntpDate = NTPUtil.GetNetworkTime();
-            _log.InfoFormat("It's {0} now. Start working.", ntpDate);
+            _log.InfoFormat("Set pre-codition.\nIt's {0} now.", ntpDate);
             // Calculate how many seconds to next 0.000 secs
-            var differenceSecs = 60000 - ntpDate.Second * 1000 - ntpDate.Millisecond;
+            var differenceSecs = 59999 - ntpDate.Second * 1000 - ntpDate.Millisecond;
             var intervalTime = IntervalTimeUtil.IntervalTime;
 
-            //if (differenceSecs > intervalTime)
-            //{
-            //    differenceSecs = 60000 - intervalTime;
-            //}
+            delay(differenceSecs, "Delay util 0.00 second");
+            _log.InfoFormat("After 1st wait. It's {0}", NTPUtil.GetNetworkTime());
 
-            delay(differenceSecs, "Delay to 0 secs");
-            _log.InfoFormat("After wait 1. It's {0}", NTPUtil.GetNetworkTime());
-
-            delay(59000 - intervalTime, "Delay to 0 secs");
-            _log.InfoFormat("After wait 2. It's {0}", NTPUtil.GetNetworkTime());
+            delay(55000 - intervalTime, "Delay before start proc timer");
+            _log.InfoFormat("After 2nd wait. It's {0}", NTPUtil.GetNetworkTime());
         }
 
         private void startProcess()
         {
-            if (IntervalTimeUtil.IntervalTime != -1)
-            {
-                IntervalTimeUtil.IsResetTime = false;
-            }
+            IntervalTimeUtil.IsResetTime = IntervalTimeUtil.IntervalTime == -1;
 
             // Reset trace time
             if (IntervalTimeUtil.IsResetTime)
             {
+                if(delayProcTimer.Enabled)
+                {
+                    delayProcTimer.Stop();
+                }
                 _log.Info("Start process. First time start");
                 _traceTime = 0;
                 tracerTimer.Start();
@@ -90,7 +82,7 @@ namespace VisaPointAutoRequest
         {
             clearLog();
             _log.InfoFormat("Start request at {0}", NTPUtil.GetNetworkTime());
-                        
+
             // Create processor object
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
 
@@ -239,7 +231,14 @@ namespace VisaPointAutoRequest
             {
                 // If is 0 second, start last request
                 var lastReqTime = NTPUtil.GetNetworkTime();
-                delay(59999 - lastReqTime.Second * 1000 - lastReqTime.Millisecond, "Before send last request");
+                var delaySecs = 59000 - lastReqTime.Second * 1000 - lastReqTime.Millisecond;
+                if (delaySecs > 10000)
+                {
+                    IntervalTimeUtil.IntervalTime = -1;
+                    IntervalTimeUtil.IsResetTime = true;
+                }
+
+                delay(delaySecs, "Delay before send last request");
                 _log.InfoFormat("WARNING!!! Send request at {0}", NTPUtil.GetNetworkTime());
             }
 
@@ -421,7 +420,7 @@ namespace VisaPointAutoRequest
                 _log.Info("Request result: CAPTCHA FALSE");
             }
 
-            if (IntervalTimeUtil.IsResetTime)
+            if (tracerTimer.Enabled)
             {
                 tracerTimer.Stop();
                 _log.InfoFormat("First request elapsed time is {0} secs", _traceTime);
@@ -553,7 +552,6 @@ namespace VisaPointAutoRequest
         {
             if(IntervalTimeUtil.IsResetTime)
             {
-                IntervalTimeUtil.IsResetTime = false;
                 startProcess();
             }
         }
