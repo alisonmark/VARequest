@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using log4net.Config;
+using System.IO;
 
 namespace VisaPointAutoRequest
 {
@@ -19,15 +20,11 @@ namespace VisaPointAutoRequest
         #region Fields/Properties
         // Logger
         private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
-
-        //private String stringSocks = "195.122.150.129:6060";
         private String stringSocks = SocksLoaderUtil.Instance.NextSock;
-        //public Uri newUri = new Uri("184.75.209.130:6060");
-        //public WebProxy proxy = new WebProxy();
-
         public String captcha;
         private string _lastCaptchaUrl = string.Empty;
         private int _traceTime = 0;
+        public String strInfo { get; set; }
         #endregion
 
         public FrmMain()
@@ -59,7 +56,7 @@ namespace VisaPointAutoRequest
             // Reset trace time
             if (IntervalTimeUtil.IsResetTime)
             {
-                if(delayProcTimer.Enabled)
+                if (delayProcTimer.Enabled)
                 {
                     delayProcTimer.Stop();
                 }
@@ -85,7 +82,7 @@ namespace VisaPointAutoRequest
 
             // Create processor object
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
-
+            vp.strInfo = strInfo;
             _log.InfoFormat("PROXY IS : {0}", stringSocks);
 
             // Request disclaimer to get cookie session
@@ -498,7 +495,7 @@ namespace VisaPointAutoRequest
             step1Res.Text = title;
             step1Res.setRes(content);
             step1Res.Show();
-            //step1Res.Close();
+            step1Res.Close();
         }
 
         private void log(String message)
@@ -555,7 +552,7 @@ namespace VisaPointAutoRequest
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(IntervalTimeUtil.IsResetTime)
+            if (IntervalTimeUtil.IsResetTime)
             {
                 startProcess();
             }
@@ -587,5 +584,40 @@ namespace VisaPointAutoRequest
             stringSocks = SocksLoaderUtil.Instance.NextSock;
         }
         #endregion
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //string[] filePaths = Directory.GetFiles(@"c:\MyDir\");
+            //System.Windows.Forms.MessageBox.Show("Files found: " + filePaths, "Message");
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "Open File Dialog";
+            fdlg.InitialDirectory = @"c:\";
+            fdlg.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+            fdlg.FilterIndex = 2;
+            fdlg.RestoreDirectory = true;
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                System.Windows.Forms.MessageBox.Show("Files found: " + fdlg.FileName, "Message");
+                strInfo = getImportDataFromFiles(fdlg.FileName);
+            }
+        }
+
+        public string getImportDataFromFiles(string fileName)
+        {
+            string strInfo = "";
+            // Code to read the contents of the text file
+            if (File.Exists(fileName))
+            {
+                using (TextReader tr = new StreamReader(fileName))
+                {
+                    MessageBox.Show(tr.ReadToEnd());
+                    while ((strInfo = tr.ReadLine()) != null)
+                    {
+                        return strInfo;
+                    }
+                }
+            }
+            return strInfo;
+        }
     }
 }

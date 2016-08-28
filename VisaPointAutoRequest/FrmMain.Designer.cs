@@ -38,6 +38,7 @@
             this.settingCaptchaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proxyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeSockTimer = new System.Windows.Forms.Timer(this.components);
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +83,8 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingCaptchaToolStripMenuItem,
-            this.proxyToolStripMenuItem});
+            this.proxyToolStripMenuItem,
+            this.importToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(414, 24);
@@ -105,6 +107,13 @@
             // 
             this.changeSockTimer.Interval = 600000;
             this.changeSockTimer.Tick += new System.EventHandler(this.changeSockTimer_Tick);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -136,6 +145,7 @@
         private System.Windows.Forms.ToolStripMenuItem settingCaptchaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proxyToolStripMenuItem;
         private System.Windows.Forms.Timer changeSockTimer;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
     }
 }
 

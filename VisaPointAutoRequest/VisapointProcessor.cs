@@ -42,7 +42,7 @@ namespace VisaPointAutoRequest
         private Random _rand = new Random();
         private List<KeyValueItem> _appointDate = new List<KeyValueItem>();
         private List<string> _infoLst = new List<string>();
-        private string strInfo = "QUAN,LE VAN QUAN,04/19/1989,Albania (Shqipëria),Male,C0584799,quanlv.mr@gmail.com,01638553433";
+        public string strInfo { get; set; }
         public DateTime dateOfBirth { get; set; }
         // End add new
 
