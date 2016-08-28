@@ -42,7 +42,7 @@ namespace VisaPointAutoRequest
         private Random _rand = new Random();
         private List<KeyValueItem> _appointDate = new List<KeyValueItem>();
         private List<string> _infoLst = new List<string>();
-        public string strInfo { get; set; }
+        public string strInfo = "";
         public DateTime dateOfBirth { get; set; }
         // End add new
 
