@@ -1,0 +1,46 @@
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server 2.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormEditUser.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.Form2.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormAddUser.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormReport.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormInputAll.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormUser.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.Properties.Resources.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server 2.csproj.GenerateResource.Cache
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.exe.licenses
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.exe
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.pdb
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.exe
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.pdb
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\RemoteContract.dll
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\RemoteContract.pdb
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormEditClientAuto.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormAddClientAuto.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormClientManagement.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormSetTime.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormSetInput.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FrmSetting.resources
+C:\Users\Administrator\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.exe.config
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server 2.csprojResolveAssemblyReference.cache
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormSetTime.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormSetInput.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormEditClientAuto.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormAddClientAuto.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormClientManagement.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormEditUser.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.Form2.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormAddUser.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormReport.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormInputAll.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FormUser.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.FrmSetting.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR_Report_Server.Properties.Resources.resources
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server 2.csproj.GenerateResource.Cache
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.exe.licenses
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.exe
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.exe.config
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.exe
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\VAR Report Server.pdb
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\RemoteContract.dll
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\bin\Release\RemoteContract.pdb
+C:\Users\My PC\Google Drive\Projects\Visa Appointment Request\VAR Report Server 2\obj\Release\VAR Report Server.pdb
