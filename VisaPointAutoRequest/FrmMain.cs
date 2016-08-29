@@ -24,7 +24,8 @@ namespace VisaPointAutoRequest
         public String captcha;
         private string _lastCaptchaUrl = string.Empty;
         private int _traceTime = 0;
-        public string strInfo ;
+        public string strInfo;
+        private int _diffSecs;
         #endregion
 
         public FrmMain()
@@ -39,7 +40,7 @@ namespace VisaPointAutoRequest
             var ntpDate = NTPUtil.GetNetworkTime();
             _log.InfoFormat("Set pre-codition.\nIt's {0} now.", ntpDate);
             // Calculate how many seconds to next 0.000 secs
-            var differenceSecs = 59999 - ntpDate.Second * 1000 - ntpDate.Millisecond;
+            var differenceSecs = (60000 + _diffSecs) - ntpDate.Second * 1000 - ntpDate.Millisecond;
             var intervalTime = IntervalTimeUtil.IntervalTime;
 
             delay(differenceSecs, "Delay util 0.00 second");
@@ -53,13 +54,14 @@ namespace VisaPointAutoRequest
         {
             IntervalTimeUtil.IsResetTime = IntervalTimeUtil.IntervalTime == -1;
 
+            if (delayProcTimer.Enabled)
+            {
+                delayProcTimer.Stop();
+            }
+
             // Reset trace time
             if (IntervalTimeUtil.IsResetTime)
             {
-                if (delayProcTimer.Enabled)
-                {
-                    delayProcTimer.Stop();
-                }
                 _log.Info("Start process. First time start");
                 _traceTime = 0;
                 tracerTimer.Start();
@@ -188,7 +190,7 @@ namespace VisaPointAutoRequest
             residence = "Vietnam+%28Vi%C3%AA%CC%A3t+Nam%29";
             //embassy = "Albania%20(Shqip%C3%ABria)%20-%20Tirana";
             //residence = "Albania%20(Shqip%C3%ABria)";
-// purpose
+            // purpose
             //vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddVisaType&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
             //                                + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
             //                                + "&ctl00_cp1_ddCitizenship_ClientState=&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
@@ -253,6 +255,17 @@ namespace VisaPointAutoRequest
 
                 log(vp.message + "\n" + "NOT_OPEN");
                 _log.Info("Request result: NOT_OPEN");
+
+                var noDateRegex = @"\d{1,2}/\d{1,2}/\d{2,4} \d{1,2}:\d{1,2}:\d{1,2}";
+                var matching = Regex.Match(vp.response, noDateRegex);
+                if (matching.Success)
+                {
+                    var noDate = DateTime.ParseExact(matching.Value, "M/d/yyyy h:m:s", System.Globalization.CultureInfo.InvariantCulture);
+                    var currentTime = NTPUtil.GetNetworkTime();
+
+                    _diffSecs = (60000 - (noDate.Second - currentTime.Second) * 1000) % 60000;
+                    IntervalTimeUtil.IsResetTime = true;
+                }
             }
             else if (vp.response.Contains("rblDate"))
             {
@@ -548,7 +561,14 @@ namespace VisaPointAutoRequest
         #region Events
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            startRequest();
+            try
+            {
+                startRequest();
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message);
+            }
         }
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
