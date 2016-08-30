@@ -20,6 +20,10 @@ namespace VisaPointAutoRequest
         #region Fields/Properties
         // Logger
         private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
+        public static readonly string APPLICATION_FOR_PERMANENT_RESIDENCE_PERMIT = "07";
+        public static readonly string LONG_TERM_RESIDENCE_PERMIT = "20";
+        public static readonly string LONG_TERM_VISA = "18";
+
         private String stringSocks = SocksLoaderUtil.Instance.NextSock;
         public String captcha;
         private string _lastCaptchaUrl = string.Empty;
@@ -84,7 +88,11 @@ namespace VisaPointAutoRequest
 
             // Create processor object
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
+            // Create Purpose Object
+            Purpose purpose = new Purpose();
+
             vp.strInfo = strInfo;
+            List<string> infoCandidate = vp.getInfomation();
             _log.InfoFormat("PROXY IS : {0}", stringSocks);
 
             // Request disclaimer to get cookie session
@@ -191,19 +199,24 @@ namespace VisaPointAutoRequest
             //embassy = "Albania%20(Shqip%C3%ABria)%20-%20Tirana";
             //residence = "Albania%20(Shqip%C3%ABria)";
             // purpose
-            //vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddVisaType&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
-            //                                + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
-            //                                + "&ctl00_cp1_ddCitizenship_ClientState=&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
-            //                                + "&ctl00$cp1$ddEmbassy={6}&ctl00_cp1_ddEmbassy_ClientState=&ctl00$cp1$ddVisaType=Application+for+Permanent+Residence+Permit&ctl00_cp1_ddVisaType_ClientState=%7B%22logEntries%22%3A%5B%5D%2C%22value%22%3A%227%22%2C%22text%22%3A%22Application+for+Permanent+Residence+Permit%22%2C%22enabled%22%3Atrue%2C%22checkedIndices%22%3A%5B%5D%2C%22checkedItemsTextOverflows%22%3Afalse%7D"
-            //                                + "&ctl00_cp1_btnNext_ClientState=%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
-            //                                , rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
 
-            vp.postData = String.Format("rsm1_TSM={0}&__EVENTTARGET=ctl00%24cp1%24ddVisaType&__EVENTARGUMENT=%7B%22Command%22%3A%22Select%22%2C%22Index%22%3A{7}%7D&__VIEWSTATE={1}&__VIEWSTATEGENERATOR={2}&__VIEWSTATEENCRYPTED="
-                                + "&__EVENTVALIDATION={3}&ctl00$ddLocale=English+%28United+Kingdom%29&ctl00_ddLocale_ClientState=&ctl00$cp1$ddCitizenship={4}"
-                                + "&ctl00_cp1_ddCitizenship_ClientState=&ctl00$cp1$ddCountryOfResidence={5}&ctl00_cp1_ddCountryOfResidence_ClientState="
-                                + "&ctl00$cp1$ddEmbassy={6}&ctl00_cp1_ddEmbassy_ClientState=&ctl00$cp1$ddVisaType=Residence+permit&ctl00_cp1_ddVisaType_ClientState=%7B%22logEntries%22%3A%5B%5D%2C%22value%22%3A%2220%22%2C%22text%22%3A%22Long-term residence permit%22%2C%22enabled%22%3Atrue%2C%22checkedIndices%22%3A%5B%5D%2C%22checkedItemsTextOverflows%22%3Afalse%7D"
-                                + "&ctl00_cp1_btnNext_ClientState=%7B%22text%22%3A%22Next%22%2C%22value%22%3A%22%22%2C%22checked%22%3Afalse%2C%22target%22%3A%22%22%2C%22navigateUrl%22%3A%22%22%2C%22commandName%22%3A%22next%22%2C%22commandArgument%22%3A%22%22%2C%22autoPostBack%22%3Atrue%2C%22selectedToggleStateIndex%22%3A0%2C%22validationGroup%22%3Anull%2C%22readOnly%22%3Afalse%7D"
-                                , rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            if (infoCandidate[8].Equals(APPLICATION_FOR_PERMANENT_RESIDENCE_PERMIT))
+            {
+                vp.postData = purpose.getPostDataPurpose01(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
+            else if (infoCandidate[8].Equals(LONG_TERM_RESIDENCE_PERMIT))
+            {
+                vp.postData = purpose.getPostDataPurpose02(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
+            else if (infoCandidate[8].Equals(LONG_TERM_VISA))
+            {
+                vp.postData = purpose.getPostDataPurpose03(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
+            else
+            {
+                //Default APPLICATION_FOR_PERMANENT_RESIDENCE_PERMIT PP
+                vp.postData = purpose.getPostDataPurpose01(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
             vp.SendRequest();
             // Show Response form [4]
             showRes("Response From https://visapoint.eu/form", vp.response);
@@ -262,9 +275,8 @@ namespace VisaPointAutoRequest
                 {
                     var noDate = DateTime.ParseExact(matching.Value, "M/d/yyyy h:m:s", System.Globalization.CultureInfo.InvariantCulture);
                     var currentTime = NTPUtil.GetNetworkTime();
-
                     _diffSecs = (60000 - (noDate.Second - currentTime.Second) * 1000) % 60000;
-                    _log.InfoFormat("FAIL at {0}. Difference time is {1} ms", noDate, _diffSecs);
+                    _log.InfoFormat("Server not open at {0}. Difference time is {1} ms", noDate, _diffSecs);
                     IntervalTimeUtil.IsResetTime = true;
                 }
             }
@@ -314,8 +326,7 @@ namespace VisaPointAutoRequest
                 viewState = vp.GetViewState();
                 eventValidation = vp.GetEventValidation();
                 rsm1 = vp.GetRsm1();
-                generator = vp.GetGenerator();
-                List<string> infoCandidate = vp.getInfomation();
+                generator = vp.GetGenerator();                
                 DateTime today = DateTime.Today;
                 DateTime minDate = today.AddYears(-120);
                 string calendarSDStr = string.Format("[[{0},{1},{2}]]", today.Year.ToString(), today.Month.ToString(), "1");
