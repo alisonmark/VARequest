@@ -9,7 +9,7 @@ namespace VisaPointAutoRequest
     static class Program
     {
         // Logger
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Program));
+        private static readonly ILog _log = LogManager.GetLogger(typeof(Program));
 
         /// <summary>
         /// The main entry point for the application.
@@ -39,7 +39,7 @@ namespace VisaPointAutoRequest
         /// <param name="e">The <see cref="UnhandledExceptionEventArgs"/> instance containing the event data.</param>
         private static void CurrentDomainUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
-            Log.Error(e.ExceptionObject);
+            _log.Error(e.ExceptionObject);
         }
 
         private static void CreateAppFolders()

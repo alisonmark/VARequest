@@ -569,6 +569,7 @@ namespace VisaPointAutoRequest
             {
                 _log.Error(ex.Message);
             }
+
         }
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)

@@ -106,7 +106,7 @@ namespace HttpRequestHelper
             {
                 //LogUtils.WriteLog(string.Format("FetchHttpGet Error: {0}\r\n\tUrl = {1}\r\n\tRefer = {2}", e.Message, url, referer), "Err");
                 _log.Error(e);
-                throw;
+                throw e;
             }
         }
         public virtual string FetchHttpPost(string url, string referer, string postData, int timeout = 20000)
@@ -184,7 +184,7 @@ namespace HttpRequestHelper
             {
                 //LogUtils.WriteLog(string.Format("FetchHttpGet Error: {0}\r\n\tUrl = {1}\r\n\tRefer = {2}\r\n\tPostData = {3}", e.Message, url, referer, postData), "Err");
                 _log.Error(e);
-                throw;
+                throw e;
             }
         }
         public virtual string FetchHttpGetAjax(string url, string referer, int timeout = 20000)
@@ -253,7 +253,7 @@ namespace HttpRequestHelper
             {
                 //LogUtils.WriteLog(string.Format("FetchHttpGetAjax Error: {0}\r\n\tUrl = {1}\r\n\tRefer = {2}", e.Message, url, referer), "Err");
                 _log.Error(e);
-                throw;
+                throw e;
             }
         }
         public virtual Bitmap FetchHttpImage(string url, string referer, int timeout = 20000)
@@ -314,7 +314,7 @@ namespace HttpRequestHelper
             {
                 //LogUtils.WriteLog(string.Format("FetchHttpGet Error: {0}\r\n\tUrl = {1}\r\n\tRefer = {2}", e.Message, url, referer), "Err");
                 _log.Error(e);
-                throw;
+                throw e;
             }
         }
 
@@ -394,7 +394,7 @@ namespace HttpRequestHelper
             {
                 //LogUtils.WriteLog(string.Format("FetchHttpGet Error: {0}\r\n\tUrl = {1}\r\n\tRefer = {2}\r\n\tPostData = {3}", e.Message, url, referer, postData), "Err");
                 _log.Error(e);
-                throw;
+                throw e;
             }
         }
 

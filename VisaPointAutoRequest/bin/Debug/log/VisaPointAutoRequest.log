@@ -2644,3 +2644,79 @@ It's 08/29/2016 00:21:34 now.
 2016/08/29 00:43:47.060 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/29/2016 00:43:46
 2016/08/29 00:43:47.122 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
 2016/08/29 00:44:10.576 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:29:06.197 [10] INFO  VisaPointAutoRequest.FrmMain - startProcess - Start process. First time start
+2016/08/30 16:29:06.630 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:29:06
+2016/08/30 16:29:06.687 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:29:30.883 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:30:05.325 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - First request elapsed time is 26 secs
+2016/08/30 16:30:05.614 [10] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:30:05 now.
+2016/08/30 16:34:11.952 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:34:11 now.
+2016/08/30 16:34:42.898 [11] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:34:42 now.
+2016/08/30 16:35:21.384 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:35:21 now.
+2016/08/30 16:36:00.605 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 1st wait. It's 08/30/2016 16:36:00
+2016/08/30 16:36:29.993 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 2nd wait. It's 08/30/2016 16:36:29
+2016/08/30 16:36:30.280 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/30/2016 16:36:30
+2016/08/30 16:36:30.581 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:36:30
+2016/08/30 16:36:30.610 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:36:59.535 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/30/2016 16:36:59
+2016/08/30 16:37:01.180 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:37:01.475 [9] INFO  VisaPointAutoRequest.FrmMain - startProcess - Start process. First time start
+2016/08/30 16:37:01.760 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:37:01
+2016/08/30 16:37:01.773 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:37:20.961 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:37:21.260 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - First request elapsed time is 19 secs
+2016/08/30 16:37:21.546 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:37:21 now.
+2016/08/30 16:38:01.558 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 1st wait. It's 08/30/2016 16:38:01
+2016/08/30 16:38:37.890 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 2nd wait. It's 08/30/2016 16:38:37
+2016/08/30 16:38:38.176 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/30/2016 16:38:37
+2016/08/30 16:38:38.467 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:38:38
+2016/08/30 16:38:38.496 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:38:59.581 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/30/2016 16:38:59
+2016/08/30 16:39:00.760 [11] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:39:01.339 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:39:01 now.
+2016/08/30 16:40:00.644 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 1st wait. It's 08/30/2016 16:40:00
+2016/08/30 16:40:36.991 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 2nd wait. It's 08/30/2016 16:40:36
+2016/08/30 16:40:37.276 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/30/2016 16:40:37
+2016/08/30 16:40:37.570 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:40:37
+2016/08/30 16:40:37.583 [6] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:40:42.315 [6] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:41:37.580 [14] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:41:37
+2016/08/30 16:41:37.594 [14] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:41:38.235 [14] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:42:37.565 [15] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:42:37
+2016/08/30 16:42:37.578 [15] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:42:38.199 [15] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:43:37.572 [16] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:43:37
+2016/08/30 16:43:37.590 [16] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:43:38.216 [16] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:44:37.556 [17] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:44:37
+2016/08/30 16:44:37.570 [17] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:44:38.185 [17] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:45:37.671 [18] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:45:37
+2016/08/30 16:45:37.684 [18] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.209.130:6060
+2016/08/30 16:45:38.308 [18] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input
+2016/08/30 16:46:37.563 [19] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:46:37
+2016/08/30 16:46:37.574 [19] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.208.10:6060
+2016/08/30 16:46:59.593 [19] INFO  VisaPointAutoRequest.FrmMain - startRequest - WARNING!!! Send request at 08/30/2016 16:46:59
+2016/08/30 16:47:00.662 [19] INFO  VisaPointAutoRequest.FrmMain - startRequest - Request result: NOT_OPEN
+2016/08/30 16:47:01.246 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - Set pre-codition.
+It's 08/30/2016 16:47:01 now.
+2016/08/30 16:48:00.588 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 1st wait. It's 08/30/2016 16:48:00
+2016/08/30 16:48:36.917 [9] INFO  VisaPointAutoRequest.FrmMain - setPreCondition - After 2nd wait. It's 08/30/2016 16:48:36
+2016/08/30 16:48:37.203 [9] INFO  VisaPointAutoRequest.FrmMain - runBackgroundWork - Start work timer at 08/30/2016 16:48:36
+2016/08/30 16:48:37.506 [20] INFO  VisaPointAutoRequest.FrmMain - startRequest - Start request at 08/30/2016 16:48:37
+2016/08/30 16:48:37.524 [20] INFO  VisaPointAutoRequest.FrmMain - startRequest - PROXY IS : 184.75.208.10:6060
+2016/08/30 16:48:44.075 [20] ERROR VisaPointAutoRequest.FrmMain - bw_DoWork - Value cannot be null.
+Parameter name: input

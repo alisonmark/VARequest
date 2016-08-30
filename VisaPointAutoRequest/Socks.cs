@@ -53,6 +53,7 @@ namespace VisaPointAutoRequest
             catch (Exception e)
             {
                 this.message = e.Message;
+                throw e;
             }
         }
     }

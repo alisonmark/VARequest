@@ -44,6 +44,7 @@
             this.prgDelay.Location = new System.Drawing.Point(12, 12);
             this.prgDelay.Name = "prgDelay";
             this.prgDelay.Size = new System.Drawing.Size(380, 18);
+            this.prgDelay.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.prgDelay.TabIndex = 0;
             // 
             // lblText

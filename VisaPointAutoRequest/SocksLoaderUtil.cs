@@ -50,8 +50,7 @@ namespace VisaPointAutoRequest
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SocksFilePath);
             if (!new FileInfo(filePath).Exists)
             {
-                // TODO: Define new exception here
-                throw new Exception();
+                throw new Exception("Socks config file doesn't exist");
             }
 
             var socks = File.ReadAllLines(filePath);
