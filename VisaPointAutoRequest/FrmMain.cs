@@ -48,10 +48,10 @@ namespace VisaPointAutoRequest
             var intervalTime = IntervalTimeUtil.IntervalTime;
 
             delay(differenceSecs, "Delay util 0.00 second");
-            _log.InfoFormat("After 1st wait. It's {0}", NTPUtil.GetNetworkTime());
+            //_log.InfoFormat("After 1st wait. It's {0}", NTPUtil.GetNetworkTime());
 
             delay(55000 - intervalTime, "Delay before start proc timer");
-            _log.InfoFormat("After 2nd wait. It's {0}", NTPUtil.GetNetworkTime());
+            //_log.InfoFormat("After 2nd wait. It's {0}", NTPUtil.GetNetworkTime());
         }
 
         private void startProcess()
@@ -455,7 +455,7 @@ namespace VisaPointAutoRequest
             if (tracerTimer.Enabled)
             {
                 tracerTimer.Stop();
-                _log.InfoFormat("First request elapsed time is {0} secs", _traceTime);
+                //_log.InfoFormat("First request elapsed time is {0} secs", _traceTime);
                 IntervalTimeUtil.IntervalTime = _traceTime * 1000;
             }
         }
@@ -551,7 +551,7 @@ namespace VisaPointAutoRequest
 
         private void runBackgroundWork()
         {
-            _log.InfoFormat("Start work timer at {0}", NTPUtil.GetNetworkTime());
+            //_log.InfoFormat("Start work timer at {0}", NTPUtil.GetNetworkTime());
             delayProcTimer.Start();
             if (!bw.IsBusy)
                 bw.RunWorkerAsync();
