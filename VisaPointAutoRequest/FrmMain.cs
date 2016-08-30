@@ -42,7 +42,7 @@ namespace VisaPointAutoRequest
         {
             // Get time from time.windows.com
             var ntpDate = NTPUtil.GetNetworkTime();
-            _log.InfoFormat("Set pre-codition.\nIt's {0} now.", ntpDate);
+            //_log.InfoFormat("Set pre-codition.\nIt's {0} now.", ntpDate);
             // Calculate how many seconds to next 0.000 secs
             var differenceSecs = (60000 + _diffSecs) - ntpDate.Second * 1000 - ntpDate.Millisecond;
             var intervalTime = IntervalTimeUtil.IntervalTime;
@@ -84,7 +84,7 @@ namespace VisaPointAutoRequest
         private void startRequest()
         {
             clearLog();
-            _log.InfoFormat("Start request at {0}", NTPUtil.GetNetworkTime());
+            //_log.InfoFormat("Start request at {0}", NTPUtil.GetNetworkTime());
 
             // Create processor object
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
