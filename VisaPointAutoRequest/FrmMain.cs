@@ -235,7 +235,7 @@ namespace VisaPointAutoRequest
             {
                 // If is 0 second, start last request
                 var lastReqTime = NTPUtil.GetNetworkTime();
-                var delaySecs = 59000 - lastReqTime.Second * 1000 - lastReqTime.Millisecond;
+                var delaySecs = 59900 - lastReqTime.Second * 1000 - lastReqTime.Millisecond;
                 if (delaySecs > 10000)
                 {
                     IntervalTimeUtil.IntervalTime = -1;
@@ -264,6 +264,7 @@ namespace VisaPointAutoRequest
                     var currentTime = NTPUtil.GetNetworkTime();
 
                     _diffSecs = (60000 - (noDate.Second - currentTime.Second) * 1000) % 60000;
+                    _log.InfoFormat("FAIL at {0}. Difference time is {1} ms", noDate, _diffSecs);
                     IntervalTimeUtil.IsResetTime = true;
                 }
             }
@@ -556,6 +557,12 @@ namespace VisaPointAutoRequest
         {
             changeSockTimer.Start();
         }
+
+        private void handleError()
+        {
+            stringSocks = SocksLoaderUtil.Instance.NextSock;
+            startProcess();
+        }
         #endregion
 
         #region Events
@@ -567,7 +574,9 @@ namespace VisaPointAutoRequest
             }
             catch (Exception ex)
             {
-                _log.Error(ex.Message);
+                _log.Error(ex);
+                log("ERROR. Immediately start new proces.");
+                handleError();
             }
 
         }

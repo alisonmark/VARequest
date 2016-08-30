@@ -45,6 +45,10 @@ namespace VisaPointAutoRequest
                 System.Threading.Thread.Sleep(secs);
                 bw.ReportProgress(i);
             }
+            if(_delayMilisecs < 0)
+            {
+                _delayMilisecs = secs * 99 + 1;
+            }
             System.Threading.Thread.Sleep(_delayMilisecs - secs * 99);
             bw.ReportProgress(i);
         }
