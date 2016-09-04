@@ -572,7 +572,8 @@ namespace VisaPointAutoRequest
         private void handleError()
         {
             stringSocks = SocksLoaderUtil.Instance.NextSock;
-            startProcess();
+            //startProcess();
+            startRequest();
         }
         #endregion
 
