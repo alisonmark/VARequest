@@ -22,7 +22,9 @@ namespace VisaPointAutoRequest
         private static readonly ILog _log = LogManager.GetLogger(typeof(FrmMain));
         public static readonly string APPLICATION_FOR_PERMANENT_RESIDENCE_PERMIT = "07";
         public static readonly string LONG_TERM_RESIDENCE_PERMIT = "20";
-        public static readonly string LONG_TERM_VISA = "18";
+        public static readonly string LONG_TERM_VISA = "18"; 
+        public static readonly string LONG_TERM_VISA_FOR_BUSINESS = "03";
+        public static readonly string LONG_TERM_VISA_FOR_STUDY = "04";
 
         private String stringSocks = SocksLoaderUtil.Instance.NextSock;
         public String captcha;
@@ -45,6 +47,7 @@ namespace VisaPointAutoRequest
             //_log.InfoFormat("Set pre-codition.\nIt's {0} now.", ntpDate);
             // Calculate how many seconds to next 0.000 secs
             var differenceSecs = (60000 + _diffSecs) - ntpDate.Second * 1000 - ntpDate.Millisecond;
+            //var differenceSecs = (60000 + _diffSecs);
             var intervalTime = IntervalTimeUtil.IntervalTime;
 
             delay(differenceSecs, "Delay util 0.00 second");
@@ -212,6 +215,14 @@ namespace VisaPointAutoRequest
             {
                 vp.postData = purpose.getPostDataPurpose03(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
             }
+            else if (infoCandidate[8].Equals(LONG_TERM_VISA_FOR_BUSINESS))
+            {
+                vp.postData = purpose.getPostDataPurpose04(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
+            else if (infoCandidate[8].Equals(LONG_TERM_VISA_FOR_STUDY))
+            {
+                vp.postData = purpose.getPostDataPurpose05(rsm1, viewState, generator, eventValidation, citizenShip, residence, embassy, citizenIndex);
+            }
             else
             {
                 //Default APPLICATION_FOR_PERMANENT_RESIDENCE_PERMIT PP
@@ -276,6 +287,7 @@ namespace VisaPointAutoRequest
                     var noDate = DateTime.ParseExact(matching.Value, "M/d/yyyy h:m:s", System.Globalization.CultureInfo.InvariantCulture);
                     var currentTime = NTPUtil.GetNetworkTime();
                     _diffSecs = (60000 - (noDate.Second - currentTime.Second) * 1000) % 60000;
+                    //_diffSecs = (60000 - (noDate.Second * 1000)) % 60000;
                     _log.InfoFormat("Server not open at {0}. Difference time is {1} ms", noDate, _diffSecs);
                     IntervalTimeUtil.IsResetTime = true;
                 }
@@ -438,6 +450,15 @@ namespace VisaPointAutoRequest
                 showRes("Response From https://visapoint.eu/form", vp.response);
                 //log(vp.message + "\n" + vp.postData);
                 log(vp.message);
+                #endregion
+
+                #region STEP 7 Sending final request
+                log("Getting validation data...");
+                FinalData data = new FinalData();
+                vp.postData = data.finalData;
+                vp.SendRequest();
+                showRes("Response From https://visapoint.eu/form", vp.response);
+
                 #endregion
 
             }

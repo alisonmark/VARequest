@@ -295,7 +295,7 @@ namespace VisaPointAutoRequest
         {
             bmp.Save(@".\\captcha.bmp");
             string captcha = "";
-            captcha = CaptchaUtils.DeathByCaptchaDecaptcher.Decaptcha(bmp, "alisonmark", "china2902");
+            captcha = CaptchaUtils.DeathByCaptchaDecaptcher.Decaptcha(bmp, "lanlan", "haNgan321");
             return RefineCaptchaString(captcha);
         }
 
