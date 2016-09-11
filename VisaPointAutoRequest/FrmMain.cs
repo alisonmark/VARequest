@@ -28,6 +28,8 @@ namespace VisaPointAutoRequest
 
         private String stringSocks = SocksLoaderUtil.Instance.NextSock;
         public String captcha;
+        public string captchaAccount = "lanlan";
+        public string captchaPassword = "haNgan321";
         private string _lastCaptchaUrl = string.Empty;
         private int _traceTime = 0;
         public string strInfo;
@@ -93,6 +95,9 @@ namespace VisaPointAutoRequest
             VisapointProcessor vp = new VisapointProcessor(stringSocks, false);
             // Create Purpose Object
             Purpose purpose = new Purpose();
+            // Setting Captcha account
+            vp.captchaAccount = captchaAccount;
+            vp.captchaPassword = captchaPassword;
 
             vp.strInfo = strInfo;
             List<string> infoCandidate = vp.getInfomation();
@@ -652,7 +657,6 @@ namespace VisaPointAutoRequest
         {
             stringSocks = SocksLoaderUtil.Instance.NextSock;
         }
-        #endregion
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -679,8 +683,18 @@ namespace VisaPointAutoRequest
                 {
                     strInfoData = reader.ReadLine();
                 }
+                btnStart.Enabled = true;
             }
             return strInfoData;
+                   
         }
+
+        private void settingCaptchaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CaptchaAccount captForm = new CaptchaAccount();
+            captForm.Show();
+            captForm.parent = this;
+        }
+        #endregion
     }
 }

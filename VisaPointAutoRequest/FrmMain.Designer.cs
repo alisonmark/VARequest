@@ -36,16 +36,16 @@
             this.delayProcTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.settingCaptchaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proxyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeSockTimer = new System.Windows.Forms.Timer(this.components);
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeSockTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStart.Location = new System.Drawing.Point(12, 51);
+            this.btnStart.Enabled = false;
+            this.btnStart.Location = new System.Drawing.Point(12, 44);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -63,9 +63,10 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(12, 80);
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtLog.Location = new System.Drawing.Point(0, 73);
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(390, 247);
+            this.txtLog.Size = new System.Drawing.Size(414, 359);
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "Idle...";
             // 
@@ -83,7 +84,6 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingCaptchaToolStripMenuItem,
-            this.proxyToolStripMenuItem,
             this.importToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
@@ -96,17 +96,7 @@
             this.settingCaptchaToolStripMenuItem.Name = "settingCaptchaToolStripMenuItem";
             this.settingCaptchaToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.settingCaptchaToolStripMenuItem.Text = "Setting Captcha";
-            // 
-            // proxyToolStripMenuItem
-            // 
-            this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.proxyToolStripMenuItem.Text = "Proxy";
-            // 
-            // changeSockTimer
-            // 
-            this.changeSockTimer.Interval = 600000;
-            this.changeSockTimer.Tick += new System.EventHandler(this.changeSockTimer_Tick);
+            this.settingCaptchaToolStripMenuItem.Click += new System.EventHandler(this.settingCaptchaToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
@@ -115,15 +105,21 @@
             this.importToolStripMenuItem.Text = "Import";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
+            // changeSockTimer
+            // 
+            this.changeSockTimer.Interval = 600000;
+            this.changeSockTimer.Tick += new System.EventHandler(this.changeSockTimer_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 339);
+            this.ClientSize = new System.Drawing.Size(414, 432);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visapoint Auto Request";
@@ -143,7 +139,6 @@
         private System.Windows.Forms.Timer delayProcTimer;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem settingCaptchaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proxyToolStripMenuItem;
         private System.Windows.Forms.Timer changeSockTimer;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
     }

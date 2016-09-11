@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptchaAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaptchaAccount.Designer.cs">
+      <DependentUpon>CaptchaAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinalData.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -109,10 +115,14 @@
       <DependentUpon>Response.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting.cs" />
+    <Compile Include="SettingCaptcha.cs" />
     <Compile Include="Socks.cs" />
     <Compile Include="SocksLoaderUtil.cs" />
     <Compile Include="IOUtil.cs" />
     <Compile Include="VisapointProcessor.cs" />
+    <EmbeddedResource Include="CaptchaAccount.resx">
+      <DependentUpon>CaptchaAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

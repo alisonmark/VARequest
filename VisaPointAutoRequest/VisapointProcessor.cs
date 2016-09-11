@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VisaPointAutoRequest
 {
@@ -42,7 +43,9 @@ namespace VisaPointAutoRequest
         private Random _rand = new Random();
         private List<KeyValueItem> _appointDate = new List<KeyValueItem>();
         private List<string> _infoLst = new List<string>();
-        public string strInfo = "";
+        public string strInfo { get; set; }
+        public string captchaAccount { get; set; }
+        public string captchaPassword { get; set; }
         public DateTime dateOfBirth { get; set; }
         // End add new
 
@@ -275,13 +278,21 @@ namespace VisaPointAutoRequest
         #region GET INFOMATION
         public List<string> getInfomation()
         {
-            string[] elementInStringInfo = strInfo.Split(new char[] { ',', ':', '-' });
-            _infoLst.Clear();
-            foreach (string s1 in elementInStringInfo)
+            if (strInfo.Equals(null) || strInfo.Equals(" "))
             {
-                _infoLst.Add(s1);
+                MessageBox.Show("Import Information Please!!!");
             }
-            dateOfBirth = Convert.ToDateTime(_infoLst[2]);
+            else
+            {
+                string[] elementInStringInfo = strInfo.Split(new char[] { ',', ':', '-' });
+                _infoLst.Clear();
+                foreach (string s1 in elementInStringInfo)
+                {
+                    _infoLst.Add(s1);
+                }
+                dateOfBirth = Convert.ToDateTime(_infoLst[2]);
+            }
+            
             //string[] elementInStringDateOfBirth = _infoLst[2].Split(new char[] { '/' });
             //foreach (string s1 in elementInStringDateOfBirth)
             //{
@@ -295,7 +306,7 @@ namespace VisaPointAutoRequest
         {
             bmp.Save(@".\\captcha.bmp");
             string captcha = "";
-            captcha = CaptchaUtils.DeathByCaptchaDecaptcher.Decaptcha(bmp, "lanlan", "haNgan321");
+            captcha = CaptchaUtils.DeathByCaptchaDecaptcher.Decaptcha(bmp, captchaAccount, captchaPassword);
             return RefineCaptchaString(captcha);
         }
 

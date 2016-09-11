@@ -8,12 +8,6 @@ namespace VisaPointAutoRequest
 {
     class Purpose
     {
-        private string pur_01 = "Application for Permanent Residence Permit";
-        private string keyPur_01 = "07";
-        private string pur_02 = "Long-term residence permit";
-        private string keyPur_02 = "20";
-        private string pur_03 = "Long-term visa";
-        private string keyPur_03 = "";
 
         public string getPostDataPurpose01(string rsm1, string viewState, string generator, string eventValidation, string citizenShip, string residence, string embassy, string citizenIndex)
         {
