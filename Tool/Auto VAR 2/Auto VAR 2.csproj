@@ -46,8 +46,17 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaUtils">
+      <HintPath>REF\CaptchaUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="DeathByCaptcha">
+      <HintPath>REF\DeathByCaptcha.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\Dll\HtmlAgilityPack.dll</HintPath>
+      <HintPath>REF\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="RemoteContract">
+      <HintPath>REF\RemoteContract.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -122,6 +131,12 @@
     <Compile Include="VarItem.cs" />
     <Compile Include="VarItemEx.cs" />
     <Compile Include="VarObject.cs" />
+    <Compile Include="VarTimeInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VarTimeInput.Designer.cs">
+      <DependentUpon>VarTimeInput.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmCaptcharBox.resx">
       <DependentUpon>FrmCaptcharBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +172,9 @@
     <EmbeddedResource Include="UcCaptchaBox.resx">
       <DependentUpon>UcCaptchaBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VarTimeInput.resx">
+      <DependentUpon>VarTimeInput.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -167,16 +185,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CaptchaUtils\CaptchaUtils.csproj">
-      <Project>{ee7e8467-94c2-42cf-a548-2324603d9fae}</Project>
-      <Name>CaptchaUtils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RemotableObject\RemoteContract.csproj">
-      <Project>{542756FD-3E21-4402-994C-239D61921C43}</Project>
-      <Name>RemoteContract</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
